@@ -1,0 +1,194 @@
+@import "../../vars.css";
+
+.container {
+  position: relative;
+  background: radial-gradient(circle at top left, rgba(13, 41, 90, 0.9) 0%, rgba(12, 12, 12, 0.9) 100%);
+  border-radius: 20px; 
+  padding: 80px 73px; /* Balanced padding: good vertical space, consistent horizontal */
+  margin-top: 100px;
+  z-index: 1;
+  margin-left: 10%;
+  margin-right: 10%;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden; /* Ensures absolute image doesn't cause overflow scrollbars */
+}
+
+.title {
+  color: var(--color-text);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 50px; /* Increased spacing for aesthetic flow */
+  width: 100%;
+  /* Optional: Add a subtle text shadow for depth */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+.EducationItems {
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Slightly reduced gap for a more cohesive list */
+  width: 100%;
+  max-width: 750px; /* Adjusted max-width for overall aesthetics */
+  padding: 0;
+  margin: 0;
+  z-index: 2; /* Ensure items are above the background image */
+}
+
+.EducationItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 15px; /* Slightly smaller border-radius for items */
+  list-style: none;
+  padding: 25px;
+  /* Enhanced gradient for items, using rgba for translucency */
+  background: linear-gradient(90deg, rgba(70, 130, 180, 0.2) 0%, rgba(25, 55, 109, 0) 100%); /* SteelBlue inspired */
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle light border */
+  backdrop-filter: blur(3px); /* Glassmorphism effect */
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.EducationItem:hover {
+  background-size: 100% 100%;
+  /* More intense gradient on hover */
+  background: linear-gradient(90deg, rgba(70, 130, 180, 0.4) 0%, rgba(25, 55, 109, 0.1) 100%);
+  transform: translateY(-5px); /* More pronounced lift on hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), /* Deeper shadow */
+              0 0 15px rgba(165, 215, 232, 0.3); /* Subtle glow */
+  border-color: rgba(255, 255, 255, 0.3); /* Border brightens on hover */
+}
+
+.EducationItemText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* Increased gap slightly for better readability */
+}
+
+.EducationItemText h3 {
+  font-size: 26px; /* Slightly larger heading */
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-primary); /* Highlight heading with primary color */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.EducationItemText p {
+  font-size: 19px; /* Slightly smaller paragraph for balance */
+  font-weight: 300; /* Lighter font-weight for softer look */
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  color: rgba(255, 255, 255, 0.85); /* Slightly desaturated text color */
+}
+
+.EducationItemText .cgpa {
+  font-size: 17px; /* Adjusted size */
+  font-weight: 700; /* Bold CGPA */
+  color: var(--color-tertiary, #a5d7e8); /* Use a complementary light blue for CGPA */
+  white-space: nowrap;
+  margin-left: 20px; /* Increased space */
+}
+
+.EducationImage {
+  width: 300px; /* Slightly larger image */
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  bottom: -20px; /* Move slightly more down for better "peeking" */
+  left: -50px; /* Move slightly more left */
+  transform: rotate(-10deg); /* Add a slight rotation for dynamic feel */
+  opacity: 0.2; /* More subtle opacity */
+  z-index: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.7)); /* Stronger shadow for the image itself */
+}
+
+
+@media screen and (max-width: 830px) {
+  .container {
+    background: radial-gradient(circle at top left, rgba(12, 46, 104, 0.95) 0%, rgba(4, 1, 21, 0.95) 100%); /* Keep gradient for mobile too */
+    padding: 40px 5%; /* Adjusted padding for mobile */
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 50px;
+    border-radius: 15px; /* Consistent border radius */
+  }
+
+  .title {
+    font-size: 30px; /* Slightly smaller title for very small screens */
+    margin-bottom: 30px;
+  }
+
+  .content {
+    gap: 2rem;
+  }
+
+  .EducationImage {
+    position: relative;
+    width: 70%; /* Make image more prominent on mobile */
+    max-width: 250px; /* Max constraint */
+    transform: none; /* Remove rotation */
+    bottom: auto;
+    left: auto;
+    margin-top: 30px; /* More space */
+    opacity: 0.5; /* More visible on mobile */
+    z-index: 1;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  }
+
+  .EducationItems {
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  .EducationItem {
+    padding: 20px; /* Adjust padding for mobile */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .EducationItemText {
+    gap: 5px;
+  }
+
+  .EducationItemText h3 {
+    font-size: 22px;
+    color: var(--color-primary); /* Keep highlight color */
+  }
+
+  .EducationItemText p {
+    font-size: 17px;
+    flex-direction: column;
+    align-items: center; /* Center text and CGPA when stacked */
+    text-align: center; /* Center text in case it wraps */
+  }
+
+  .EducationItemText .cgpa {
+    margin-left: 0;
+    margin-top: 5px;
+    font-size: 15px;
+  }
+}

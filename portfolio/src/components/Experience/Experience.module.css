@@ -1,0 +1,156 @@
+@import "../../vars.css";
+.container {
+ color: var(--color-text);
+ padding: 140px 10%;
+ background: linear-gradient(180deg, #071535 0%, #19407A 100%);
+ scroll-margin-top: 80px;
+ box-sizing: border-box; /* Ensures padding is included in element's total width/height */
+ display: flex; /* For centering content */
+ flex-direction: column;
+ align-items: center;
+}
+
+
+.title {
+ color: var(--color-text);
+ font-size: 38px;
+ font-weight: 700;
+ letter-spacing: 1.75px;
+ text-transform: uppercase;
+ text-align: center;
+ margin-bottom: 50px; /* Increased margin for better separation */
+ text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ width: 100%; /* Ensures title can center correctly */
+
+}
+.content {
+ display: flex;
+ flex-direction: column;
+ gap: 3rem; /* Consistent gap between main content blocks */
+ align-items: center;
+ width: 100%;
+
+}
+
+/* ==== HISTORY ==== */
+
+.history {
+ display: flex;
+ flex-direction: column;
+ gap: 1.5rem; /* Space between history items */
+ width: 100%;
+ max-width: 900px; /* Max width for readability */
+ z-index: 1; /* Ensure history items are above any background effects */
+}
+
+.historyItem {
+ display: flex;
+ flex-direction: row;
+ align-items: flex-start;
+ gap: 1.5rem;
+ border-radius: 15px; /* Slightly refined border-radius */
+ padding: 25px;
+ list-style: none;
+ background: linear-gradient(90deg, rgba(30, 70, 110, 0.3) 0%, rgba(25, 55, 109, 0) 100%);
+ color: white;
+ background-size: 0 100%;
+ background-repeat: no-repeat;
+ transition: background-size 0.5s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out, border 0.3s ease-out;
+ border: 1px solid rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(3px);
+ -webkit-backdrop-filter: blur(3px); /* For Safari compatibility */
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
+
+}
+
+.historyItemDetails {
+ font-family: var(--font-roboto);
+ flex: 1;
+}
+
+.historyItemDetails h3 {
+ font-size: 1.6rem; /* Slightly larger heading for impact */
+ font-weight: 600; /* Bolder heading */
+ margin: 0;
+ color: var(--color-primary, #a5d7e8); /* Use primary color for headings */
+ text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.historyItemDetails p {
+ font-size: 1.05rem; /* Slightly larger paragraph text */
+ font-weight: 300; /* Lighter font weight for body text */
+ margin: 0.5rem 0; /* More vertical space for paragraphs */
+ color: rgba(255, 255, 255, 0.9); /* Slightly desaturated for aesthetic */
+
+}
+
+.historyItemDetails ul {
+ margin-top: 0.75rem; /* More space above list */
+ list-style-position: inside;
+ font-size: 1rem; /* Consistent list item font size */
+ list-style-type: disc;
+ padding-left: 1.5rem; /* More padding for list items */
+ color: rgba(255, 255, 255, 0.8); /* Slightly less prominent list items */
+}
+
+
+
+.historyItem:hover {
+ background-size: 100% 100%;
+ background: linear-gradient(90deg, rgba(30, 70, 110, 0.6) 0%, rgba(25, 55, 109, 0.15) 100%);
+ transform: translateY(-8px); /* More pronounced lift on hover */
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), /* Deeper shadow */
+           0 0 20px rgba(130, 200, 255, 0.3); /* Subtle blue glow */
+ border: 1px solid rgba(255, 255, 255, 0.4); /* Border brightens on hover */
+
+}
+
+/* ==== RESPONSIVE ==== */
+
+@media screen and (max-width: 830px) {
+ .container {
+    padding: 80px 5%;
+ }
+
+ .title {
+    font-size: 32px;
+    margin-bottom: 30px;
+ }
+.content {
+   gap: 2.5rem;
+ }
+
+.history {
+ gap: 1rem;
+ max-width: 100%;
+ }
+
+ .historyItem {
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+   padding: 20px;
+   gap: 1rem;
+ }
+
+.historyItemDetails {
+   text-align: center; /* Center align text on mobile */
+}
+
+ .historyItemDetails h3 {
+  font-size: 1.4rem; /* Adjust for mobile */
+ }
+ .historyItemDetails p {
+   font-size: 0.95rem; /* Adjust for mobile */
+ margin: 0.5rem 0;
+ }
+ .historyItemDetails ul {
+ padding-left: 0; /* Remove left padding for list on mobile if centered */
+ text-align: left; /* Keep list items left-aligned within the container */
+ width: 100%; /* Ensure list takes full width for proper alignment */
+ box-sizing: border-box; /* Include padding in width calculation */
+ padding-left: 1rem; /* Re-add some padding for list bullets */
+ }
+
+}

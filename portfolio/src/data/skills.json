@@ -1,0 +1,15 @@
+[
+  { "title": "Java", "imageSrc": "skills/java.webp" },
+  { "title": "Python", "imageSrc": "skills/python-logo.jpg" },
+  { "title": "HTML", "imageSrc": "skills/html.png" },
+  { "title": "CSS", "imageSrc": "skills/css.png" },
+  { "title": "JavaScript", "imageSrc": "skills/js.png" },
+  { "title": "React JS", "imageSrc": "skills/react.png" },
+  { "title": "Tailwind CSS", "imageSrc": "skills/tailwind.png" },
+  { "title": "MongoDB", "imageSrc": "skills/mongodb.png" },
+  { "title": "MySQL", "imageSrc": "skills/mysql.png" },
+  { "title": "R language", "imageSrc": "skills/r.png" },
+  { "title": "Tableau", "imageSrc": "skills/tableau.png" },
+  { "title": "PowerBI", "imageSrc": "skills/powerbi.png" },
+  { "title": "Git", "imageSrc": "skills/git.png" }
+]
