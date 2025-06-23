@@ -4,23 +4,23 @@
     "imageSrc": "projects/cryptocurrency.png",
     "description": "A web app that tracks real-time cryptocurrency data, built to strengthen my skills in modern web development and API integration",
     "skills": ["React", "Tailwindcss", "GeckoCoin API"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "demo": "https://cryptocurrency-price-tracker-xi.vercel.app/",
+    "source": "https://github.com/sriyamahapatra/Cryptocurrency-Price-Tracker"
   },
   {
     "title": "Expenses Tracker",
     "imageSrc": "projects/money.png",
     "description": "An expense tracker app built to manage personal finances while practicing modern frontend development and state management.",
     "skills": ["React", "Tailwindcss", "Node","MongoDB"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "demo": "https://money-tracker-bysm.netlify.app/",
+    "source": "https://github.com/sriyamahapatra/expense-tracker"
   },
   {
     "title": "Quizora-Quiz Application",
     "imageSrc": "projects/quiz.png",
     "description": "Quizora is a quiz app with multiple topics and real-time scoring, built to sharpen my frontend and data management skills.",
     "skills": ["HTML", "CSS", "JavaScript","Gemini"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "demo": "https://quizoraproj.netlify.app/",
+    "source": "https://github.com/sriyamahapatra/Quizora"
   }
 ]
