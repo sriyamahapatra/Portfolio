@@ -4,8 +4,8 @@
  padding: 140px 10%;
  background: linear-gradient(180deg, #071535 0%, #19407A 100%);
  scroll-margin-top: 80px;
- box-sizing: border-box; /* Ensures padding is included in element's total width/height */
- display: flex; /* For centering content */
+ box-sizing: border-box; 
+ display: flex; 
  flex-direction: column;
  align-items: center;
 }
@@ -18,15 +18,15 @@
  letter-spacing: 1.75px;
  text-transform: uppercase;
  text-align: center;
- margin-bottom: 50px; /* Increased margin for better separation */
+ margin-bottom: 50px; 
  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
- width: 100%; /* Ensures title can center correctly */
+ width: 100%; 
 
 }
 .content {
  display: flex;
  flex-direction: column;
- gap: 3rem; /* Consistent gap between main content blocks */
+ gap: 3rem; 
  align-items: center;
  width: 100%;
 
@@ -37,10 +37,10 @@
 .history {
  display: flex;
  flex-direction: column;
- gap: 1.5rem; /* Space between history items */
+ gap: 1.5rem; 
  width: 100%;
- max-width: 900px; /* Max width for readability */
- z-index: 1; /* Ensure history items are above any background effects */
+ max-width: 900px; 
+ z-index: 1; 
 }
 
 .historyItem {
@@ -58,8 +58,8 @@
  transition: background-size 0.5s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out, border 0.3s ease-out;
  border: 1px solid rgba(255, 255, 255, 0.15);
 backdrop-filter: blur(3px);
- -webkit-backdrop-filter: blur(3px); /* For Safari compatibility */
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
+ -webkit-backdrop-filter: blur(3px); 
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
 
 }
 
@@ -78,20 +78,20 @@ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
 }
 
 .historyItemDetails p {
- font-size: 1.05rem; /* Slightly larger paragraph text */
- font-weight: 300; /* Lighter font weight for body text */
- margin: 0.5rem 0; /* More vertical space for paragraphs */
- color: rgba(255, 255, 255, 0.9); /* Slightly desaturated for aesthetic */
+ font-size: 1.05rem;
+ font-weight: 300; 
+ margin: 0.5rem 0; 
+ color: rgba(255, 255, 255, 0.9); 
 
 }
 
 .historyItemDetails ul {
- margin-top: 0.75rem; /* More space above list */
+ margin-top: 0.75rem; 
  list-style-position: inside;
- font-size: 1rem; /* Consistent list item font size */
+ font-size: 1rem; 
  list-style-type: disc;
- padding-left: 1.5rem; /* More padding for list items */
- color: rgba(255, 255, 255, 0.8); /* Slightly less prominent list items */
+ padding-left: 1.5rem; 
+ color: rgba(255, 255, 255, 0.8); 
 }
 
 
@@ -99,10 +99,10 @@ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
 .historyItem:hover {
  background-size: 100% 100%;
  background: linear-gradient(90deg, rgba(30, 70, 110, 0.6) 0%, rgba(25, 55, 109, 0.15) 100%);
- transform: translateY(-8px); /* More pronounced lift on hover */
- box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), /* Deeper shadow */
-           0 0 20px rgba(130, 200, 255, 0.3); /* Subtle blue glow */
- border: 1px solid rgba(255, 255, 255, 0.4); /* Border brightens on hover */
+ transform: translateY(-8px); 
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 
+           0 0 20px rgba(130, 200, 255, 0.3); 
+ border: 1px solid rgba(255, 255, 255, 0.4); 
 
 }
 
@@ -135,22 +135,22 @@ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
  }
 
 .historyItemDetails {
-   text-align: center; /* Center align text on mobile */
+   text-align: center;
 }
 
  .historyItemDetails h3 {
-  font-size: 1.4rem; /* Adjust for mobile */
+  font-size: 1.4rem; 
  }
  .historyItemDetails p {
-   font-size: 0.95rem; /* Adjust for mobile */
+   font-size: 0.95rem; 
  margin: 0.5rem 0;
  }
  .historyItemDetails ul {
- padding-left: 0; /* Remove left padding for list on mobile if centered */
- text-align: left; /* Keep list items left-aligned within the container */
- width: 100%; /* Ensure list takes full width for proper alignment */
- box-sizing: border-box; /* Include padding in width calculation */
- padding-left: 1rem; /* Re-add some padding for list bullets */
+ padding-left: 0; 
+ text-align: left; 
+ width: 100%; 
+ box-sizing: border-box; 
+ padding-left: 1rem; 
  }
 
 }
