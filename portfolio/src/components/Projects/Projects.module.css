@@ -6,7 +6,7 @@
   color: var(--color-text);
   margin-left: 10%;
   margin-right: 10%;
-  background: linear-gradient(180deg, #020e1f 0%, #051e51 100%); /* Deep space blue gradient */
+  background: linear-gradient(180deg, #020e1f 0%, #051e51 100%); 
   padding: 80px 0;
   border-radius: 20px;
   box-sizing: border-box;
@@ -15,7 +15,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(100, 149, 237, 0.2); /* Subtle cosmic border */
+  border: 1px solid rgba(100, 149, 237, 0.2); 
 }
 
 .container::before {
@@ -40,7 +40,7 @@
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 50px;
-  text-shadow: 0 0 15px rgba(100, 149, 237, 0.5); /* Cornflower blue glow */
+  text-shadow: 0 0 15px rgba(100, 149, 237, 0.5); 
   position: relative;
   z-index: 1;
   color: #ffffff;
@@ -69,7 +69,6 @@
 /* Responsive adjustments */
 @media screen and (max-width: 1200px) {
   .projects {
-    /* For smaller desktops/laptops, adjust gap if needed */
     gap: 25px;
   }
 }
@@ -88,13 +87,13 @@
   }
 
   .projects {
-    gap: 20px; /* Smaller gap on mobile */
-    padding: 0; /* Remove horizontal padding if container has it */
+    gap: 20px; 
+    padding: 0; 
   }
 }
 
 @media screen and (max-width: 600px) {
   .projects {
-    gap: 15px; /* Even smaller gap on very small screens */
+    gap: 15px; 
   }
 }
