@@ -12,7 +12,7 @@
     "imageSrc": "projects/money.png",
     "description": "An expense tracker app built to manage personal finances while practicing modern frontend development and state management.",
     "skills": ["React", "Tailwindcss", "Node","MongoDB"],
-    "demo": "https://money-tracker-bysm.netlify.app/",
+    "demo": "https://money-tracker-bysm.netlify.app/"
     "source": "https://github.com/sriyamahapatra/expense-tracker"
   },
   {
