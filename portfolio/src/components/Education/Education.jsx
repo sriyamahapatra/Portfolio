@@ -9,11 +9,11 @@ export const Education = () => {
     <section className={styles.container} id="Education">
       <h2 className={styles.title}>Education</h2>
       <div className={styles.content}>
-        <img
+        {/* <img
           src={getImageUrl("Education/EducationImage.png")}
           alt="Me sitting with a laptop"
           className={styles.EducationImage}
-        />
+        /> */}
         <ul className={styles.EducationItems}>
           <li className={styles.EducationItem}>
             <div className={styles.EducationItemText}>

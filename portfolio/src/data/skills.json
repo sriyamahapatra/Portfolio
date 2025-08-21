@@ -8,7 +8,9 @@
   { "title": "Tailwind CSS", "imageSrc": "skills/tailwind.png" },
   { "title": "MongoDB", "imageSrc": "skills/mongodb.png" },
   { "title": "MySQL", "imageSrc": "skills/mysql.png" },
-  { "title": "R language", "imageSrc": "skills/r.png" },
+  { "title": "express", "imageSrc": "skills/express.png" },
+  { "title": "node", "imageSrc": "skills/node.webp" },
+  { "title": "api", "imageSrc": "skills/API.webp" },
   { "title": "Tableau", "imageSrc": "skills/tableau.png" },
   { "title": "PowerBI", "imageSrc": "skills/powerbi.png" },
   { "title": "Git", "imageSrc": "skills/git.png" }

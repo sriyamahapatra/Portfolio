@@ -12,7 +12,9 @@ import reactImg from "../../asserts/skills/react.png";
 import tailwindImg from "../../asserts/skills/tailwind.png";
 import mongodbImg from "../../asserts/skills/mongodb.png";
 import mysqlImg from "../../asserts/skills/mysql.png";
-import rImg from "../../asserts/skills/r.jpg";
+import expressImg from "../../asserts/skills/express.png";
+import nodeImg from "../../asserts/skills/node.webp";
+import APIImg from "../../asserts/skills/API.webp";
 import tableauImg from "../../asserts/skills/tableau.png";
 import powerbiImg from "../../asserts/skills/powerbi.jpg";
 import gitImg from "../../asserts/skills/git-logo.png";
@@ -28,7 +30,9 @@ const imageMap = {
   "skills/tailwind.png": tailwindImg,
   "skills/mongodb.png": mongodbImg,
   "skills/mysql.png": mysqlImg,
-  "skills/r.png": rImg,
+  "skills/express.png": expressImg,
+  "skills/node.webp":nodeImg,
+  "skills/API.webp":APIImg,
   "skills/tableau.png": tableauImg,
   "skills/powerbi.png": powerbiImg,
   "skills/git.png": gitImg

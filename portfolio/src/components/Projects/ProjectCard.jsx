@@ -6,10 +6,12 @@ import { getImageUrl } from "../../utils";
 import cryptocurrency from "../../asserts/Projects/cryptocurrency.png";
 import expense from "../../asserts/Projects/money.png";
 import quiz from "../../asserts/Projects/quiz.png";
+import skillswap from "../../asserts/Projects/SkillSwap.png";
 
 const imageMap = {
   "projects/cryptocurrency.png": cryptocurrency,
   "projects/money.png": expense,
+  "projects/SkillSwap.png":skillswap,
   "projects/quiz.png": quiz,
 };
 

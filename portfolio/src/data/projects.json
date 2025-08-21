@@ -1,19 +1,27 @@
 [
   {
-    "title": "Cryptocurrency Tracker",
+    "title": "Cryptocurrency Market Visualizer",
     "imageSrc": "projects/cryptocurrency.png",
     "description": "A web app that tracks real-time cryptocurrency data, built to strengthen my skills in modern web development and API integration",
-    "skills": ["React", "Tailwindcss", "GeckoCoin API"],
+    "skills": ["React", "Tailwindcss", "GeckoCoin API","Clerk Aunthentication"],
     "demo": "https://cryptocurrency-price-tracker-xi.vercel.app/",
     "source": "https://github.com/sriyamahapatra/Cryptocurrency-Price-Tracker"
   },
   {
-    "title": "Expenses Tracker",
+    "title": "Budgrithm – Smart Budgeting & Expense Visualizer",
     "imageSrc": "projects/money.png",
     "description": "An expense tracker app built to manage personal finances while practicing modern frontend development and state management.",
     "skills": ["React", "Tailwindcss", "Node","MongoDB"],
     "demo": "https://money-tracker-bysm.netlify.app/",
     "source": "https://github.com/sriyamahapatra/expense-tracker"
+  },
+  {
+    "title": "SkillBuddies",
+    "imageSrc": "projects/SkillSwap.png",
+    "description": "Developed a skill exchange platform with swipe matchmaking, secure auth, and responsive UI for multiple users.",
+    "skills": ["React", "CSS", "Express","MongoDB"],
+    "demo": "#",
+    "source": "https://github.com/sriyamahapatra/skill-swap"
   },
   {
     "title": "Quizora-Quiz Application",
@@ -23,4 +31,5 @@
     "demo": "https://quizoraproj.netlify.app/",
     "source": "https://github.com/sriyamahapatra/Quizora"
   }
+
 ]
