@@ -20,7 +20,7 @@ export const Education = () => {
               <h3>Vellore Institute Of Technology</h3>
               <p>
                 B Tech Computer Science Engineer
-                <span className={styles.cgpa}>cgpa: 8.31</span>
+                <span className={styles.cgpa}>cgpa: 8.42</span>
               </p>
               <p>Andhra Pradesh</p>
             </div>
