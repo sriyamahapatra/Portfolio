@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
-import menuBtn from "../../asserts/navbar/menuIcon.png";
-import closeBtn from "../../asserts/navbar/closeIcon.png";
+import menuIcon from "../../asserts/navbar/menuIcon.png";
+import closeIcon from "../../asserts/navbar/closeIcon.png";
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,19 +11,21 @@ export const Navbar = () => {
       <a className={styles.title} href="/">
         <span className={styles.cosmicText}>Portfolio</span>
       </a>
+      
       <div className={styles.menu}>
         <img
           className={styles.menuBtn}
-          src={menuOpen ? closeBtn : menuBtn}
+          src={menuOpen ? closeIcon : menuIcon}
           alt="menu-button"
           onClick={() => setMenuOpen(!menuOpen)}
         />
+        
         <ul
-          className={`${styles.menuItems} ${menuOpen && styles.menuOpen}`}
+          className={`${styles.menuItems} ${menuOpen ? styles.menuOpen : ""}`}
           onClick={() => setMenuOpen(false)}
         >
           <li>
-            <a href="#Education" className={styles.menuLink}>
+            <a href="#education" className={styles.menuLink}>
               <span className={styles.linkText}>Education</span>
               <span className={styles.linkHover}></span>
             </a>

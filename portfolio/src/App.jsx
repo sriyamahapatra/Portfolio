@@ -11,12 +11,24 @@ function App() {
   return (
     <div className={styles.App}>
       <Navbar />
-      <Hero />
-      <Education />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Contact />
+      <section id="home">
+        <Hero />
+      </section>
+      <section id="education">
+        <Education />
+      </section>
+      <section id="experience">
+        <Experience />
+      </section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
     </div>
   );
 }
