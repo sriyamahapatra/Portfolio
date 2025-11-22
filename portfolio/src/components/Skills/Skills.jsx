@@ -15,8 +15,8 @@ import mysqlImg from "../../asserts/skills/mysql.png";
 import expressImg from "../../asserts/skills/express.png";
 import nodeImg from "../../asserts/skills/node.webp";
 import APIImg from "../../asserts/skills/API.webp";
-import tableauImg from "../../asserts/skills/tableau.png";
-import powerbiImg from "../../asserts/skills/powerbi.jpg";
+import SpringBootImg from "../../asserts/skills/Springboot.png";
+import postgreSQLImg from "../../asserts/skills/postgreSQL.png";
 import gitImg from "../../asserts/skills/git-logo.png";
 
 // ✅ Create a map to resolve string to image import
@@ -33,8 +33,8 @@ const imageMap = {
   "skills/express.png": expressImg,
   "skills/node.webp":nodeImg,
   "skills/API.webp":APIImg,
-  "skills/tableau.png": tableauImg,
-  "skills/powerbi.png": powerbiImg,
+  "skills/Springboot.png": SpringBootImg,
+  "skills/postgreSQL.png": postgreSQLImg,
   "skills/git.png": gitImg
 };
 

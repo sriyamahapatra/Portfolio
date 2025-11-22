@@ -11,7 +11,7 @@
   { "title": "express", "imageSrc": "skills/express.png" },
   { "title": "node", "imageSrc": "skills/node.webp" },
   { "title": "api", "imageSrc": "skills/API.webp" },
-  { "title": "Tableau", "imageSrc": "skills/tableau.png" },
-  { "title": "PowerBI", "imageSrc": "skills/powerbi.png" },
+  { "title": "Java SpringBoot", "imageSrc": "skills/Springboot.png" },
+  { "title": "PostgreSQL", "imageSrc": "skills/postgreSQL.png" },
   { "title": "Git", "imageSrc": "skills/git.png" }
 ]

@@ -49,7 +49,7 @@ export const Hero = () => {
           Vellore Institute Of Technology
         </p>
         <a 
-          href="https://drive.google.com/file/d/1qQgY6Ri8klPulO1_hZyCopZjl5ElLwWJ/view?usp=drive_link" 
+          href="https://drive.google.com/file/d/13XJ7gISM6Y-YfpS08Q0jjjHV2DSdz8c7/view?usp=sharing" 
           className={styles.contactBtn}
         >
           Download Resume

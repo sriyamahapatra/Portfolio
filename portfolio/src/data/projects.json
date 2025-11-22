@@ -1,5 +1,13 @@
 [
   {
+    "title": "Forest - Open Discussion Forum",
+    "imageSrc": "projects/forestimg.png",
+    "description": "Open discussion forum featuring topic branching, fast queries, and an integrated AI reply assistant",
+    "skills": ["TypeScript", "Bootstrap", "CSS","JWT Auth","HTML","Spring Boot","MongoDB"],
+    "demo": "#",
+    "source": "https://github.com/sriyamahapatra/Capstone-Project"
+  },
+  {
     "title": "Cryptocurrency Market Visualizer",
     "imageSrc": "projects/cryptocurrency.png",
     "description": "A web app that tracks real-time cryptocurrency data, built to strengthen my skills in modern web development and API integration",
