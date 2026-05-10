@@ -6,10 +6,17 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { Projects } from "./components/Projects/Projects";
 import { Skills } from "./components/Skills/Skills";
 import { useEffect } from "react";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+const MotionDiv = motion.div;
+
 function App() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const spotlight = useMotionTemplate`radial-gradient(620px circle at ${mouseX}px ${mouseY}px, rgba(21, 200, 168, 0.18), transparent 64%)`;
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -19,8 +26,19 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    const handlePointerMove = ({ clientX, clientY }) => {
+      mouseX.set(clientX);
+      mouseY.set(clientY);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, [mouseX, mouseY]);
+
   return (
     <div className={styles.App}>
+      <MotionDiv className={styles.globalSpotlight} style={{ background: spotlight }} />
       <Navbar />
       <section id="home" data-aos="fade-up">
         <Hero />

@@ -1,4 +1,4 @@
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import heroImage from "../../asserts/hero/heroImage.jpg";
@@ -50,19 +50,8 @@ const MotionH1 = motion.h1;
 const MotionP = motion.p;
 
 export const Hero = () => {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${mouseX}px ${mouseY}px, rgba(21, 200, 168, 0.18), transparent 64%)`;
-
-  const handleMouseMove = ({ currentTarget, clientX, clientY }) => {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  };
-
   return (
-    <section className={styles.container} onMouseMove={handleMouseMove}>
-      <motion.div className={styles.spotlight} style={{ background: spotlight }} />
+    <section className={styles.container}>
       <div className={styles.skyline} aria-hidden="true">
         <span />
         <span />
@@ -85,12 +74,7 @@ export const Hero = () => {
         </MotionH1>
 
         <motion.div className={styles.role} variants={itemVariants}>
-          <TypeAnimation
-            sequence={roles}
-            wrapper="span"
-            speed={48}
-            repeat={Infinity}
-          />
+          <TypeAnimation sequence={roles} wrapper="span" speed={48} repeat={Infinity} />
         </motion.div>
 
         <MotionP className={styles.description} variants={itemVariants}>

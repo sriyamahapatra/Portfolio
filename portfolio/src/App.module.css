@@ -1,8 +1,23 @@
 @import "./vars.css";
 
 .App {
+  position: relative;
+  isolation: isolate;
   background: transparent;
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+.globalSpotlight {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+.App > section {
+  position: relative;
+  z-index: 1;
 }

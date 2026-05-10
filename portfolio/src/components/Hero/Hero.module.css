@@ -5,7 +5,7 @@
   width: 100%;
   min-height: 100vh;
   margin: 0;
-  padding: 148px max(20px, calc((100vw - var(--content-width)) / 2)) 76px;
+  padding: 156px max(20px, calc((100vw - var(--content-width)) / 2)) 76px;
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(320px, 5fr);
   align-items: center;
@@ -14,16 +14,10 @@
   overflow: hidden;
 }
 
-.spotlight,
 .skyline {
   position: fixed;
   inset: 0;
   pointer-events: none;
-}
-
-.spotlight {
-  z-index: -1;
-  opacity: 0.9;
 }
 
 .skyline {
@@ -336,7 +330,7 @@
 @media (max-width: 900px) {
   .container {
     grid-template-columns: 1fr;
-    padding-top: 112px;
+    padding-top: 124px;
     padding-inline: max(20px, 6vw);
     text-align: center;
   }

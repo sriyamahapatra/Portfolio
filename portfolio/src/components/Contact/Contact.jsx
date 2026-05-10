@@ -1,10 +1,7 @@
 import { motion } from "framer-motion";
-import { useCallback, useState } from "react";
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import styles from "./Contact.module.css";
-
-const initialFormData = { name: "", email: "", message: "" };
 
 const contactInfo = [
   { label: "Email", value: "sriyamahapatra767@gmail.com", href: "mailto:sriyamahapatra767@gmail.com", Icon: FaEnvelope },
@@ -26,21 +23,6 @@ const MotionAnchor = motion.a;
 const MotionButton = motion.button;
 
 export const Contact = () => {
-  const [formData, setFormData] = useState(initialFormData);
-
-  const handleChange = useCallback(({ target: { name, value } }) => {
-    setFormData((current) => ({ ...current, [name]: value }));
-  }, []);
-
-  const handleSubmit = useCallback(
-    (event) => {
-      event.preventDefault();
-      console.log("Form submitted:", formData);
-      setFormData(initialFormData);
-    },
-    [formData]
-  );
-
   return (
     <section className={styles.container}>
       <div className={styles.header}>
@@ -88,15 +70,20 @@ export const Contact = () => {
           </div>
         </div>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form
+          className={styles.form}
+          action="https://formsubmit.co/sriyamahapatra767@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="New portfolio message" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
           {fields.map(({ name, label, type, placeholder }) => (
             <label className={styles.formGroup} key={name}>
               <span>{label}</span>
               <input
                 type={type}
                 name={name}
-                value={formData[name]}
-                onChange={handleChange}
                 placeholder={placeholder}
                 required
               />
@@ -107,8 +94,6 @@ export const Contact = () => {
             <span>Message</span>
             <textarea
               name="message"
-              value={formData.message}
-              onChange={handleChange}
               placeholder="Your message here..."
               rows={5}
               required
