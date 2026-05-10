@@ -11,7 +11,7 @@ const contactInfo = [
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/sriyamahapatra", Icon: FaGithub },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/sriya-mahapatra-b79354271/", Icon: FaLinkedin },
-  { label: "LeetCode", href: "https://leetcode.com/sriyamahapatra/", Icon: SiLeetcode },
+  { label: "LeetCode", href: "https://leetcode.com/u/sriyamahapatra767/", Icon: SiLeetcode },
 ];
 
 const fields = [
