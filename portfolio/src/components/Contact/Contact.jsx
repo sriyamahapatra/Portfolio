@@ -15,8 +15,8 @@ const socialLinks = [
 ];
 
 const fields = [
-  { name: "name", label: "Name", type: "text", placeholder: "John Doe" },
-  { name: "email", label: "Email", type: "email", placeholder: "john@example.com" },
+  { name: "name", label: "Name", type: "text", placeholder: "Enter your name" },
+  { name: "email", label: "Email", type: "email", placeholder: "Enter your email" },
 ];
 
 const MotionAnchor = motion.a;
