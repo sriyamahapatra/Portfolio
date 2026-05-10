@@ -1,59 +1,106 @@
-
-import styles from "./Skills.module.css";
+import { motion } from "framer-motion";
+import { FaCode, FaDatabase, FaLayerGroup, FaTools } from "react-icons/fa";
 import skills from "../../data/skills.json";
-
-// ✅ Import all image files manually
-import javaImg from "../../asserts/skills/java.webp";
-import pythonImg from "../../asserts/skills/python-logo.jpg";
-import htmlImg from "../../asserts/skills/html.png";
+import apiImg from "../../asserts/skills/API.webp";
 import cssImg from "../../asserts/skills/css.png";
+import expressImg from "../../asserts/skills/express.png";
+import gitImg from "../../asserts/skills/git-logo.png";
+import htmlImg from "../../asserts/skills/html.png";
+import javaImg from "../../asserts/skills/java.webp";
 import jsImg from "../../asserts/skills/javascript.png";
-import reactImg from "../../asserts/skills/react.png";
-import tailwindImg from "../../asserts/skills/tailwind.png";
 import mongodbImg from "../../asserts/skills/mongodb.png";
 import mysqlImg from "../../asserts/skills/mysql.png";
-import expressImg from "../../asserts/skills/express.png";
 import nodeImg from "../../asserts/skills/node.webp";
-import APIImg from "../../asserts/skills/API.webp";
-import SpringBootImg from "../../asserts/skills/Springboot.png";
 import postgreSQLImg from "../../asserts/skills/postgreSQL.png";
-import gitImg from "../../asserts/skills/git-logo.png";
+import pythonImg from "../../asserts/skills/python-logo.jpg";
+import reactImg from "../../asserts/skills/react.png";
+import springBootImg from "../../asserts/skills/Springboot.png";
+import tailwindImg from "../../asserts/skills/tailwind.png";
+import styles from "./Skills.module.css";
 
-// ✅ Create a map to resolve string to image import
 const imageMap = {
-  "skills/java.webp": javaImg,
-  "skills/python-logo.jpg": pythonImg,
-  "skills/html.png": htmlImg,
+  "skills/API.webp": apiImg,
   "skills/css.png": cssImg,
+  "skills/express.png": expressImg,
+  "skills/git.png": gitImg,
+  "skills/html.png": htmlImg,
+  "skills/java.webp": javaImg,
   "skills/js.png": jsImg,
-  "skills/react.png": reactImg,
-  "skills/tailwind.png": tailwindImg,
   "skills/mongodb.png": mongodbImg,
   "skills/mysql.png": mysqlImg,
-  "skills/express.png": expressImg,
-  "skills/node.webp":nodeImg,
-  "skills/API.webp":APIImg,
-  "skills/Springboot.png": SpringBootImg,
+  "skills/node.webp": nodeImg,
   "skills/postgreSQL.png": postgreSQLImg,
-  "skills/git.png": gitImg
+  "skills/python-logo.jpg": pythonImg,
+  "skills/react.png": reactImg,
+  "skills/Springboot.png": springBootImg,
+  "skills/tailwind.png": tailwindImg,
 };
 
+const categories = [
+  { title: "Frontend", Icon: FaCode, skills: ["HTML", "CSS", "JavaScript", "React JS", "Tailwind CSS"] },
+  { title: "Backend", Icon: FaLayerGroup, skills: ["node", "express", "Java SpringBoot", "api"] },
+  { title: "Database", Icon: FaDatabase, skills: ["MongoDB", "MySQL", "PostgreSQL"] },
+  { title: "Core Tools", Icon: FaTools, skills: ["Java", "Python", "Git"] },
+];
+
+const MotionDiv = motion.div;
+
 export const Skills = () => {
+  const skillByTitle = new Map(skills.map((skill) => [skill.title, skill]));
+
   return (
-    <section className={styles.container} id="skills">
-      <h2 className={styles.title}>Skills</h2>
-      <div className={styles.skills}>
-        {skills.map((skill, index) => (
-          <div key={index} className={styles.skill}>
-            <div className={styles.skillImageContainer}>
-              <img
-                src={imageMap[skill.imageSrc]}
-                alt={skill.title}
-                loading="lazy"
-              />
+    <section className={styles.container}>
+      <div className={styles.header}>
+        <span className={styles.kicker}>Toolkit</span>
+        <h2>Skills with practical range</h2>
+        <p>Languages, frameworks, databases, and tools I use to build reliable products.</p>
+      </div>
+
+      <div className={styles.categories}>
+        {categories.map((category, index) => (
+          <MotionDiv
+            className={styles.category}
+            key={category.title}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.06 }}
+          >
+            <div className={styles.categoryHeader}>
+              <category.Icon aria-hidden="true" />
+              <h3>{category.title}</h3>
             </div>
-            <p>{skill.title}</p>
-          </div>
+            <div className={styles.chips}>
+              {category.skills.map((skillName) => {
+                const skill = skillByTitle.get(skillName);
+                if (!skill) return null;
+
+                return (
+                  <span className={styles.chip} key={skillName}>
+                    <img src={imageMap[skill.imageSrc]} alt="" loading="lazy" />
+                    {skill.title}
+                  </span>
+                );
+              })}
+            </div>
+          </MotionDiv>
+        ))}
+      </div>
+
+      <div className={styles.skillWall}>
+        {skills.map((skill, index) => (
+          <MotionDiv
+            className={styles.skill}
+            key={skill.title}
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.025 }}
+            whileHover={{ y: -5 }}
+          >
+            <img src={imageMap[skill.imageSrc]} alt={skill.title} loading="lazy" />
+            <span>{skill.title}</span>
+          </MotionDiv>
         ))}
       </div>
     </section>

@@ -1,168 +1,215 @@
 @import "../../vars.css";
 
 .navbar {
-  position: relative;
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  padding: 18px 0;
+  transition: background 0.25s ease, border-color 0.25s ease, padding 0.25s ease;
+}
+
+.scrolled {
+  padding: 12px 0;
+  background: rgba(8, 11, 18, 0.82);
+  border-bottom: 1px solid var(--color-border);
+  backdrop-filter: blur(18px);
+}
+
+.navContainer {
+  width: min(var(--content-width), calc(100% - 40px));
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 61px;
-  z-index: 2;
-  margin: 0 10%;
-  width: 80%;
-  box-sizing: border-box;
+  gap: 24px;
 }
 
-.title {
-  font-size: 30px;
-  font-weight: 600;
+.logo,
+.navLink,
+.resumeBtn,
+.mobileLink,
+.mobileResume {
   text-decoration: none;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--color-text);
+  font-weight: 800;
 }
 
-.cosmicText {
-  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.logoMark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  box-shadow: 0 12px 30px rgba(124, 92, 255, 0.28);
 }
 
-.menu {
+/* .logoText {
+  font-size: 18px;
+} */
+
+.desktopMenu {
   display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.menuBtn {
-  display: none; 
+.navLink,
+.resumeBtn {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: var(--radius);
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 700;
 }
 
-.menuItems {
-  display: flex;
-  gap: 47px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.navLink {
+  padding: 0 12px;
+  border: 1px solid transparent;
 }
 
-.menuItems a {
-  font-size: 25px;
+.navLink:hover,
+.active {
   color: var(--color-text);
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+.active {
+  box-shadow: inset 0 -2px 0 var(--color-secondary);
+}
+
+.resumeBtn,
+.mobileResume {
+  padding: 0 16px;
+  color: #061019;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-warm));
+}
+
+.menuToggle,
+.closeBtn {
+  border: 0;
+  color: var(--color-text);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.menuToggle {
+  width: 42px;
+  height: 42px;
+  display: none;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 19px;
+}
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0 0 0 auto;
+  z-index: 1002;
+  width: min(360px, 88vw);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(10, 15, 26, 0.98);
+  border-left: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.mobileHeader,
+.mobileSocial {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mobileHeader {
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.closeBtn {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius);
+}
+
+.mobileLinks {
+  display: grid;
+  gap: 10px;
+}
+
+.mobileLink {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+  border-radius: var(--radius);
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px solid transparent;
+}
+
+.mobileLink.active,
+.mobileLink:hover {
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.mobileResume {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: var(--radius);
+  font-weight: 800;
+}
+
+.mobileSocial {
+  margin-top: auto;
+}
+
+.mobileSocial a {
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 700;
   text-decoration: none;
-  position: relative;
-  padding: 5px 0;
-  transition: color 0.3s ease;
 }
 
-.menuLink {
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-  display: block;
+.mobileSocial a:hover {
+  color: var(--color-secondary);
 }
 
-.linkText {
-  position: relative;
-  z-index: 1;
-}
-
-.linkHover {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-  transition: width 0.3s ease;
-  border-radius: 1px;
-}
-
-.menuItems a:hover {
-  color: var(--color-primary);
-}
-
-.menuItems a:hover .linkHover {
-  width: 100%;
-}
-
-@media screen and (max-width: 830px) {
-  .navbar {
-    flex-direction: row;
-    align-items: center;
-    padding-top: 30px;
-    margin: 0 5%;
-    width: 90%;
-  }
-
-  .menu {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  /* Show menu button on mobile */
-  .menuBtn {
-    display: block !important;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    z-index: 1000;
-  }
-
-  /* Hide menu items by default on mobile */
-  .menuItems {
+@media (max-width: 900px) {
+  .desktopMenu {
     display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(
-      0deg,
-      rgba(25, 55, 109, 0.95) 0%,
-      rgba(25, 55, 109, 0.98) 100%
-    );
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-    z-index: 999;
   }
 
-  /* Show menu when open */
-  .menuOpen {
-    display: flex !important;
-  }
-
-  .menuItems a {
-    font-size: 24px;
-    color: var(--color-text);
-    padding: 10px 20px;
-  }
-
-  .title {
-    font-size: 24px;
-    z-index: 1001;
-    position: relative;
-  }
-}
-
-/* Small mobile screens */
-@media screen and (max-width: 480px) {
-  .navbar {
-    margin: 0 5%;
-    padding-top: 20px;
-  }
-  
-  .title {
-    font-size: 20px;
-  }
-  
-  .menuItems a {
-    font-size: 20px;
-  }
-  
-  .menuBtn {
-    width: 25px;
-    height: 25px;
+  .menuToggle {
+    display: grid;
   }
 }

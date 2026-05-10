@@ -1,68 +1,158 @@
-import React, { useState, useEffect } from "react";
-import styles from "./Hero.module.css";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import heroImage from "../../asserts/hero/heroImage.jpg";
+import styles from "./Hero.module.css";
+
+const RESUME_URL =
+  "https://drive.google.com/file/d/13XJ7gISM6Y-YfpS08Q0jjjHV2DSdz8c7/view";
+
+const roles = [
+  "Computer Science Engineer",
+  1800,
+  "Backend Developer",
+  1800,
+  "Problem Solver",
+  1800,
+  "Full Stack Builder",
+  1800,
+];
+
+const stats = [
+  ["10+", "Shipped builds"],
+  ["2", "Internships"],
+  ["15+", "Tech tools"],
+];
+
+const socialLinks = [
+  { href: "https://github.com/sriyamahapatra", label: "GitHub", Icon: FaGithub },
+  {
+    href: "https://www.linkedin.com/in/sriya-mahapatra-b79354271/",
+    label: "LinkedIn",
+    Icon: FaLinkedin,
+  },
+  { href: "mailto:sriyamahapatra767@gmail.com", label: "Email", Icon: FaEnvelope },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+};
+
+const itemVariants = {
+  hidden: { y: 24, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.55 } },
+};
+
+const MotionAnchor = motion.a;
+const MotionDiv = motion.div;
+const MotionH1 = motion.h1;
+const MotionP = motion.p;
 
 export const Hero = () => {
-  const [stars, setStars] = useState([]);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const spotlight = useMotionTemplate`radial-gradient(520px circle at ${mouseX}px ${mouseY}px, rgba(21, 200, 168, 0.18), transparent 64%)`;
 
-  useEffect(() => {
-    const starsArray = Array.from({ length: 30 }).map(() => ({
-      id: Math.random(),
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 1.2 + 0.5,
-      opacity: Math.random() * 0.7 + 0.3,
-      delay: Math.random() * 5,
-      duration: Math.random() * 4 + 3
-    }));
-    setStars(starsArray);
-  }, []);
+  const handleMouseMove = ({ currentTarget, clientX, clientY }) => {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  };
 
   return (
-    <section className={styles.container}>
-      {/* Cosmic background elements */}
-      <div className={styles.cosmicBackground}>
-        {stars.map(star => (
-          <div 
-            key={star.id}
-            className={styles.star}
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-              opacity: star.opacity,
-              animationDelay: `${star.delay}s`,
-              animationDuration: `${star.duration}s`
-            }}
-          />
-        ))}
-        <div className={styles.topBlur} />
-        <div className={styles.bottomBlur} />
+    <section className={styles.container} onMouseMove={handleMouseMove}>
+      <motion.div className={styles.spotlight} style={{ background: spotlight }} />
+      <div className={styles.skyline} aria-hidden="true">
+        <span />
+        <span />
+        <span />
       </div>
 
-      <div className={styles.content}>
-        <h1 className={styles.title}>Hi, I'm Sriya Mahapatra</h1>
-        <p className={styles.description}>
-          I'm a BTech Student <br/>
-          Computer Science Engineer<br/>
-          Vellore Institute Of Technology
-        </p>
-        <a 
-          href="https://drive.google.com/file/d/13XJ7gISM6Y-YfpS08Q0jjjHV2DSdz8c7/view?usp=sharing" 
-          className={styles.contactBtn}
-        >
-          Download Resume
-        </a>
-      </div>
-      <div className={styles.imageContainer}>
-        <img
-          src={heroImage} 
-          alt="Hero image of me"
-          className={styles.heroImg}
-        />
-        <div className={styles.imageGlow} />
-      </div>
+      <MotionDiv
+        className={styles.content}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.span className={styles.kicker} variants={itemVariants}>
+          <span className={styles.liveDot} />
+          Available for backend and full stack roles
+        </motion.span>
+
+        <MotionH1 className={styles.title} variants={itemVariants}>
+          Hi, I am <span>Sriya Mahapatra</span>
+        </MotionH1>
+
+        <motion.div className={styles.role} variants={itemVariants}>
+          <TypeAnimation
+            sequence={roles}
+            wrapper="span"
+            speed={48}
+            repeat={Infinity}
+          />
+        </motion.div>
+
+        <MotionP className={styles.description} variants={itemVariants}>
+          BTech CSE student at Vellore Institute of Technology, focused on
+          scalable APIs, database-backed systems, and clean web experiences.
+        </MotionP>
+
+        <motion.div className={styles.actions} variants={itemVariants}>
+          <motion.a
+            href={RESUME_URL}
+            className={styles.primaryBtn}
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Download Resume
+          </motion.a>
+          <motion.a
+            href="#projects"
+            className={styles.secondaryBtn}
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            View Projects
+          </motion.a>
+        </motion.div>
+
+        <motion.div className={styles.stats} variants={itemVariants}>
+          {stats.map(([value, label]) => (
+            <div className={styles.stat} key={label}>
+              <strong>{value}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div className={styles.socialLinks} variants={itemVariants}>
+          {socialLinks.map((link) => (
+            <MotionAnchor
+              key={link.label}
+              href={link.href}
+              aria-label={link.label}
+              target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+              whileHover={{ y: -3 }}
+              whileTap={{ scale: 0.94 }}
+            >
+              <link.Icon aria-hidden="true" />
+            </MotionAnchor>
+          ))}
+        </motion.div>
+      </MotionDiv>
+
+      <MotionDiv
+        className={styles.portrait}
+        initial={{ opacity: 0, y: 30, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.65, delay: 0.2 }}
+      >
+        <img src={heroImage} alt="Sriya Mahapatra" />
+      </MotionDiv>
     </section>
   );
 };
