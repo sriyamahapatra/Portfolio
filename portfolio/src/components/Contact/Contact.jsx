@@ -72,7 +72,7 @@ export const Contact = () => {
 
         <form
           className={styles.form}
-          action="https://formsubmit.co/sriyamahapatra767@gmail.com"
+          action="https://sriyamahapatra767@gmail.com"
           method="POST"
         >
           <input type="hidden" name="_subject" value="New portfolio message" />
