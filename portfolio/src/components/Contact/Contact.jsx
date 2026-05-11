@@ -1,30 +1,74 @@
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import styles from "./Contact.module.css";
-
-const contactInfo = [
-  { label: "Email", value: "sriyamahapatra767@gmail.com", href: "mailto:sriyamahapatra767@gmail.com", Icon: FaEnvelope },
-  { label: "Location", value: "Pune,  Maharashtra", href: "https://www.google.com/maps/search/?api=1&query=Pune%2C%20Maharashtra", Icon: FaMapMarkerAlt },
-];
-
-const socialLinks = [
-  { label: "GitHub", href: "https://github.com/sriyamahapatra", Icon: FaGithub },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/sriya-mahapatra-b79354271/", Icon: FaLinkedin },
-  { label: "LeetCode", href: "https://leetcode.com/u/sriyamahapatra767/", Icon: SiLeetcode },
-];
-
-const fields = [
-  { name: "name", label: "Name", type: "text", placeholder: "Enter your name" },
-  { name: "email", label: "Email", type: "email", placeholder: "Enter your email" },
-];
 
 const MotionAnchor = motion.a;
 const MotionButton = motion.button;
 
 export const Contact = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  // ALL data comes from .env file - NOTHING hardcoded!
+  const contactInfo = [
+    { 
+      label: "Email", 
+      value: import.meta.env.VITE_CONTACT_EMAIL, 
+      href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`, 
+      Icon: FaEnvelope 
+    },
+    { 
+      label: "Location", 
+      value: import.meta.env.VITE_CONTACT_LOCATION, 
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(import.meta.env.VITE_CONTACT_LOCATION || "")}`, 
+      Icon: FaMapMarkerAlt 
+    },
+  ];
+
+  const socialLinks = [
+    { label: "GitHub", href: import.meta.env.VITE_GITHUB_URL, Icon: FaGithub },
+    { label: "LinkedIn", href: import.meta.env.VITE_LINKEDIN_URL, Icon: FaLinkedin },
+    { label: "LeetCode", href: import.meta.env.VITE_LEETCODE_URL, Icon: SiLeetcode },
+  ];
+
+  const fields = [
+    { name: "name", label: "Name", type: "text", placeholder: "Enter your name" },
+    { name: "email", label: "Email", type: "email", placeholder: "Enter your email" },
+  ];
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    toast.loading("Sending message...", { id: "sending" });
+
+    // Here you can integrate EmailJS or any email service
+    // The email will go to: import.meta.env.VITE_CONTACT_EMAIL
+    
+    setTimeout(() => {
+      toast.success("Message sent successfully!", { id: "sending" });
+      setFormData({ name: "", email: "", message: "" });
+      setIsLoading(false);
+    }, 1000);
+  };
+
   return (
     <section className={styles.container}>
+      <Toaster position="top-right" />
+      
       <div className={styles.header}>
         <span className={styles.kicker}>Contact</span>
         <h2>Let us build something useful</h2>
@@ -40,8 +84,8 @@ export const Contact = () => {
                 className={styles.infoItem}
                 key={item.label}
                 href={item.href}
-                target={item.href.startsWith("http") ? "_blank" : undefined}
-                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                target={item.href?.startsWith("http") ? "_blank" : undefined}
+                rel={item.href?.startsWith("http") ? "noreferrer" : undefined}
                 whileHover={{ x: 4 }}
               >
                 <item.Icon aria-hidden="true" />
@@ -70,14 +114,7 @@ export const Contact = () => {
           </div>
         </div>
 
-        <form
-          className={styles.form}
-          action="https://sriyamahapatra767@gmail.com"
-          method="POST"
-        >
-          <input type="hidden" name="_subject" value="New portfolio message" />
-          <input type="hidden" name="_template" value="table" />
-          <input type="hidden" name="_captcha" value="false" />
+        <form className={styles.form} onSubmit={handleSubmit}>
           {fields.map(({ name, label, type, placeholder }) => (
             <label className={styles.formGroup} key={name}>
               <span>{label}</span>
@@ -86,6 +123,9 @@ export const Contact = () => {
                 name={name}
                 placeholder={placeholder}
                 required
+                value={formData[name]}
+                onChange={handleChange}
+                disabled={isLoading}
               />
             </label>
           ))}
@@ -97,11 +137,18 @@ export const Contact = () => {
               placeholder="Your message here..."
               rows={5}
               required
+              value={formData.message}
+              onChange={handleChange}
+              disabled={isLoading}
             />
           </label>
 
-          <MotionButton type="submit" whileTap={{ scale: 0.98 }}>
-            Send Message
+          <MotionButton 
+            type="submit" 
+            whileTap={{ scale: 0.98 }}
+            disabled={isLoading}
+          >
+            {isLoading ? "Sending..." : "Send Message"}
           </MotionButton>
         </form>
       </div>

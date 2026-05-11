@@ -44,11 +44,6 @@ const itemVariants = {
   visible: { y: 0, opacity: 1, transition: { duration: 0.55 } },
 };
 
-const MotionAnchor = motion.a;
-const MotionDiv = motion.div;
-const MotionH1 = motion.h1;
-const MotionP = motion.p;
-
 export const Hero = () => {
   return (
     <section className={styles.container}>
@@ -58,7 +53,7 @@ export const Hero = () => {
         <span />
       </div>
 
-      <MotionDiv
+      <motion.div
         className={styles.content}
         variants={containerVariants}
         initial="hidden"
@@ -69,25 +64,25 @@ export const Hero = () => {
           Available for backend and full stack roles
         </motion.span>
 
-        <MotionH1 className={styles.title} variants={itemVariants}>
+        <motion.h1 className={styles.title} variants={itemVariants}>
           Hi, I am <span>Sriya Mahapatra</span>
-        </MotionH1>
+        </motion.h1>
 
         <motion.div className={styles.role} variants={itemVariants}>
           <TypeAnimation sequence={roles} wrapper="span" speed={48} repeat={Infinity} />
         </motion.div>
 
-        <MotionP className={styles.description} variants={itemVariants}>
+        <motion.p className={styles.description} variants={itemVariants}>
           BTech CSE student at Vellore Institute of Technology, focused on
           scalable APIs, database-backed systems, and clean web experiences.
-        </MotionP>
+        </motion.p>
 
         <motion.div className={styles.actions} variants={itemVariants}>
           <motion.a
             href={RESUME_URL}
             className={styles.primaryBtn}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
           >
@@ -113,30 +108,33 @@ export const Hero = () => {
         </motion.div>
 
         <motion.div className={styles.socialLinks} variants={itemVariants}>
-          {socialLinks.map((link) => (
-            <MotionAnchor
-              key={link.label}
-              href={link.href}
-              aria-label={link.label}
-              target={link.href.startsWith("mailto:") ? undefined : "_blank"}
-              rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.94 }}
-            >
-              <link.Icon aria-hidden="true" />
-            </MotionAnchor>
-          ))}
+          {socialLinks.map((link) => {
+            const isMail = link.href.startsWith("mailto:");
+            return (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                aria-label={link.label}
+                target={isMail ? undefined : "_blank"}
+                rel={isMail ? undefined : "noopener noreferrer"}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.94 }}
+              >
+                <link.Icon aria-hidden="true" />
+              </motion.a>
+            );
+          })}
         </motion.div>
-      </MotionDiv>
+      </motion.div>
 
-      <MotionDiv
+      <motion.div
         className={styles.portrait}
         initial={{ opacity: 0, y: 30, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.65, delay: 0.2 }}
       >
         <img src={heroImage} alt="Sriya Mahapatra" />
-      </MotionDiv>
+      </motion.div>
     </section>
   );
 };
