@@ -12,6 +12,7 @@ import mongodbImg from "../../asserts/skills/mongodb.png";
 import mysqlImg from "../../asserts/skills/mysql.png";
 import nodeImg from "../../asserts/skills/node.webp";
 import postgreSQLImg from "../../asserts/skills/postgreSQL.png";
+import plsqlImg from "../../asserts/skills/PLSQL.jpg";
 import pythonImg from "../../asserts/skills/python-logo.jpg";
 import reactImg from "../../asserts/skills/react.png";
 import springBootImg from "../../asserts/skills/Springboot.png";
@@ -30,6 +31,7 @@ const imageMap = {
   "skills/mysql.png": mysqlImg,
   "skills/node.webp": nodeImg,
   "skills/postgreSQL.png": postgreSQLImg,
+  "skills/PLSQL.jpg": plsqlImg,
   "skills/python-logo.jpg": pythonImg,
   "skills/react.png": reactImg,
   "skills/Springboot.png": springBootImg,
@@ -39,7 +41,7 @@ const imageMap = {
 const categories = [
   { title: "Frontend", Icon: FaCode, skills: ["HTML", "CSS", "JavaScript", "React JS", "Tailwind CSS"] },
   { title: "Backend", Icon: FaLayerGroup, skills: ["node", "express", "Java SpringBoot", "api"] },
-  { title: "Database", Icon: FaDatabase, skills: ["MongoDB", "MySQL", "PostgreSQL"] },
+  { title: "Database", Icon: FaDatabase, skills: ["MongoDB", "MySQL", "PostgreSQL", "PLSQL"] },
   { title: "Core Tools", Icon: FaTools, skills: ["Java", "Python", "Git"] },
 ];
 

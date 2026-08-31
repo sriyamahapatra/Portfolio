@@ -1,12 +1,56 @@
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+import emailjs from "emailjs-com";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import styles from "./Contact.module.css";
 
 const MotionAnchor = motion.a;
 const MotionButton = motion.button;
+
+const {
+  VITE_CONTACT_EMAIL,
+  VITE_CONTACT_LOCATION,
+  VITE_GITHUB_URL,
+  VITE_LINKEDIN_URL,
+  VITE_LEETCODE_URL,
+  VITE_EMAILJS_SERVICE_ID,
+  VITE_EMAILJS_TEMPLATE_ID,
+  VITE_EMAILJS_PUBLIC_KEY,
+} = import.meta.env;
+
+const hasEmailJsConfig =
+  Boolean(VITE_EMAILJS_SERVICE_ID) &&
+  Boolean(VITE_EMAILJS_TEMPLATE_ID) &&
+  Boolean(VITE_EMAILJS_PUBLIC_KEY);
+
+const sendWithFormSubmit = async ({ name, email, message }) => {
+  const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(VITE_CONTACT_EMAIL)}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      email,
+      message,
+      _replyto: email,
+      _subject: `Portfolio message from ${name}`,
+      _template: "table",
+      _captcha: "false",
+    }),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok || result.success === false) {
+    throw new Error(result.message || "FormSubmit request failed.");
+  }
+
+  return result;
+};
 
 export const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,27 +60,28 @@ export const Contact = () => {
     message: "",
   });
 
-  // ALL data comes from .env file - NOTHING hardcoded!
   const contactInfo = [
     { 
       label: "Email", 
-      value: import.meta.env.VITE_CONTACT_EMAIL, 
-      href: `mailto:${import.meta.env.VITE_CONTACT_EMAIL}`, 
+      value: VITE_CONTACT_EMAIL, 
+      href: VITE_CONTACT_EMAIL ? `mailto:${VITE_CONTACT_EMAIL}` : "", 
       Icon: FaEnvelope 
     },
     { 
       label: "Location", 
-      value: import.meta.env.VITE_CONTACT_LOCATION, 
-      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(import.meta.env.VITE_CONTACT_LOCATION || "")}`, 
+      value: VITE_CONTACT_LOCATION, 
+      href: VITE_CONTACT_LOCATION
+        ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(VITE_CONTACT_LOCATION)}`
+        : "", 
       Icon: FaMapMarkerAlt 
     },
-  ];
+  ].filter((item) => item.value && item.href);
 
   const socialLinks = [
-    { label: "GitHub", href: import.meta.env.VITE_GITHUB_URL, Icon: FaGithub },
-    { label: "LinkedIn", href: import.meta.env.VITE_LINKEDIN_URL, Icon: FaLinkedin },
-    { label: "LeetCode", href: import.meta.env.VITE_LEETCODE_URL, Icon: SiLeetcode },
-  ];
+    { label: "GitHub", href: VITE_GITHUB_URL, Icon: FaGithub },
+    { label: "LinkedIn", href: VITE_LINKEDIN_URL, Icon: FaLinkedin },
+    { label: "LeetCode", href: VITE_LEETCODE_URL, Icon: SiLeetcode },
+  ].filter((link) => link.href);
 
   const fields = [
     { name: "name", label: "Name", type: "text", placeholder: "Enter your name" },
@@ -52,17 +97,55 @@ export const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const trimmedFormData = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    };
+
+    if (!trimmedFormData.name || !trimmedFormData.email || !trimmedFormData.message) {
+      toast.error("Please fill in every field.");
+      return;
+    }
+
+    if (!VITE_CONTACT_EMAIL) {
+      toast.error("Contact email is not configured.");
+      return;
+    }
+
     setIsLoading(true);
     toast.loading("Sending message...", { id: "sending" });
 
-    // Here you can integrate EmailJS or any email service
-    // The email will go to: import.meta.env.VITE_CONTACT_EMAIL
-    
-    setTimeout(() => {
-      toast.success("Message sent successfully!", { id: "sending" });
+    try {
+      if (hasEmailJsConfig) {
+        await emailjs.send(
+          VITE_EMAILJS_SERVICE_ID,
+          VITE_EMAILJS_TEMPLATE_ID,
+          {
+            from_name: trimmedFormData.name,
+            from_email: trimmedFormData.email,
+            reply_to: trimmedFormData.email,
+            message: trimmedFormData.message,
+            to_email: VITE_CONTACT_EMAIL,
+          },
+          VITE_EMAILJS_PUBLIC_KEY
+        );
+      } else {
+        await sendWithFormSubmit(trimmedFormData);
+      }
+
+      toast.success(
+        "Message sent successfully!",
+        { id: "sending" }
+      );
       setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS send failed:", error);
+      toast.error("Message could not be sent. Please try the direct email link.", { id: "sending" });
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (

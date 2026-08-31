@@ -4,6 +4,12 @@ import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import heroImage from "../../asserts/hero/heroImage.jpg";
 import styles from "./Hero.module.css";
 
+const MotionAnchor = motion.a;
+const MotionDiv = motion.div;
+const MotionHeading = motion.h1;
+const MotionParagraph = motion.p;
+const MotionSpan = motion.span;
+
 const RESUME_URL =
   "https://drive.google.com/file/d/13XJ7gISM6Y-YfpS08Q0jjjHV2DSdz8c7/view";
 
@@ -53,32 +59,32 @@ export const Hero = () => {
         <span />
       </div>
 
-      <motion.div
+      <MotionDiv
         className={styles.content}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.span className={styles.kicker} variants={itemVariants}>
+        <MotionSpan className={styles.kicker} variants={itemVariants}>
           <span className={styles.liveDot} />
           Available for backend and full stack roles
-        </motion.span>
+        </MotionSpan>
 
-        <motion.h1 className={styles.title} variants={itemVariants}>
+        <MotionHeading className={styles.title} variants={itemVariants}>
           Hi, I am <span>Sriya Mahapatra</span>
-        </motion.h1>
+        </MotionHeading>
 
-        <motion.div className={styles.role} variants={itemVariants}>
+        <MotionDiv className={styles.role} variants={itemVariants}>
           <TypeAnimation sequence={roles} wrapper="span" speed={48} repeat={Infinity} />
-        </motion.div>
+        </MotionDiv>
 
-        <motion.p className={styles.description} variants={itemVariants}>
+        <MotionParagraph className={styles.description} variants={itemVariants}>
           BTech CSE student at Vellore Institute of Technology, focused on
           scalable APIs, database-backed systems, and clean web experiences.
-        </motion.p>
+        </MotionParagraph>
 
-        <motion.div className={styles.actions} variants={itemVariants}>
-          <motion.a
+        <MotionDiv className={styles.actions} variants={itemVariants}>
+          <MotionAnchor
             href={RESUME_URL}
             className={styles.primaryBtn}
             target="_blank"
@@ -87,31 +93,31 @@ export const Hero = () => {
             whileTap={{ scale: 0.97 }}
           >
             Download Resume
-          </motion.a>
-          <motion.a
+          </MotionAnchor>
+          <MotionAnchor
             href="#projects"
             className={styles.secondaryBtn}
             whileHover={{ y: -3 }}
             whileTap={{ scale: 0.97 }}
           >
             View Projects
-          </motion.a>
-        </motion.div>
+          </MotionAnchor>
+        </MotionDiv>
 
-        <motion.div className={styles.stats} variants={itemVariants}>
+        <MotionDiv className={styles.stats} variants={itemVariants}>
           {stats.map(([value, label]) => (
             <div className={styles.stat} key={label}>
               <strong>{value}</strong>
               <span>{label}</span>
             </div>
           ))}
-        </motion.div>
+        </MotionDiv>
 
-        <motion.div className={styles.socialLinks} variants={itemVariants}>
+        <MotionDiv className={styles.socialLinks} variants={itemVariants}>
           {socialLinks.map((link) => {
             const isMail = link.href.startsWith("mailto:");
             return (
-              <motion.a
+              <MotionAnchor
                 key={link.label}
                 href={link.href}
                 aria-label={link.label}
@@ -121,20 +127,20 @@ export const Hero = () => {
                 whileTap={{ scale: 0.94 }}
               >
                 <link.Icon aria-hidden="true" />
-              </motion.a>
+              </MotionAnchor>
             );
           })}
-        </motion.div>
-      </motion.div>
+        </MotionDiv>
+      </MotionDiv>
 
-      <motion.div
+      <MotionDiv
         className={styles.portrait}
         initial={{ opacity: 0, y: 30, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.65, delay: 0.2 }}
       >
         <img src={heroImage} alt="Sriya Mahapatra" />
-      </motion.div>
+      </MotionDiv>
     </section>
   );
 };

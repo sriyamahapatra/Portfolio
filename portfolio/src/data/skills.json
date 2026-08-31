@@ -13,5 +13,6 @@
   { "title": "api", "imageSrc": "skills/API.webp" },
   { "title": "Java SpringBoot", "imageSrc": "skills/Springboot.png" },
   { "title": "PostgreSQL", "imageSrc": "skills/postgreSQL.png" },
+   { "title": "PLSQL", "imageSrc": "skills/PLSQL.jpg" },
   { "title": "Git", "imageSrc": "skills/git.png" }
 ]
